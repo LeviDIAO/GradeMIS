@@ -19,7 +19,10 @@ public class EditController {
     @FXML private HBox editstage;
 
     @FXML private void showChoose(){
-            FXMLLoader loader=new FXMLLoader(MainSceneController.class.getResource("Choose.fxml"));
+        //关闭上一个窗口
+        Stage stage = (Stage) editstage.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader=new FXMLLoader(MainSceneController.class.getResource("Choose.fxml"));
          Parent root = null;
          try {
              root = loader.load();
@@ -27,21 +30,16 @@ public class EditController {
              throw new RuntimeException(e);
          }
          Stage ChooseStage = new Stage();
-            ChooseStage.setTitle("计算机系学生信息录入");
-            ChooseStage.initModality(Modality.WINDOW_MODAL);
+            ChooseStage.setTitle("选择学生系别");
+            //ChooseStage.initModality(Modality.WINDOW_MODAL);
             ChooseStage.setScene(new Scene(root));
-
             //设置新增页面的控制器
             //CSEditDialogController controller = loader.getController();
             //controller.setDialogStage(ChooseStage);
 
-            Stage stage = (Stage) editstage.getScene().getWindow();
-            stage.close();
+
             //显示对话框并等待用户操作
             ChooseStage.showAndWait();
-
-
-
         }
 
     public void setEditStage(Stage stage) {

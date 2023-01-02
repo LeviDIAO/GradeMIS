@@ -53,14 +53,10 @@ public class MainSceneController {
         EditController controller = loader.getController();
         controller.setEditStage(stage);
 
-        //Editstage.setX(mainX+305);
-        //Editstage.setY(mainY+174);
         //取消标题栏
         //Editstage.initStyle(StageStyle.UNDECORATED);
         //置于最上层
         Editstage.setAlwaysOnTop(true);
-        //修改透明度
-        //Editstage.setOpacity(0.5);
         //显示对话框并等待用户操作
         Editstage.showAndWait();
     }

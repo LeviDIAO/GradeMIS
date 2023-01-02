@@ -18,7 +18,6 @@ import javafx.stage.WindowEvent;
 import java.io.IOException;
 
 public class MainApp extends Application {
-    //double mainX,mainY;
     @Override
     public void start(Stage stage) throws Exception {
         //加载layout
@@ -32,8 +31,7 @@ public class MainApp extends Application {
         stage.setResizable(false);
         stage.show();
         MainSceneController controller = loader.getController();
-        // mainX=stage.getX();
-        //mainY=stage.getY();
+        //主界面关闭时全部窗口关闭
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
