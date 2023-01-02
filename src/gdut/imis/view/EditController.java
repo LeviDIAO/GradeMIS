@@ -17,6 +17,9 @@ public class EditController {
     @FXML private Label update;
     @FXML private Stage stage;
     @FXML private HBox editstage;
+    @FXML private Stage EditStage;
+    public EditController() {
+    }
 
     @FXML private void showChoose(){
             FXMLLoader loader=new FXMLLoader(MainSceneController.class.getResource("Choose.fxml"));
@@ -34,16 +37,16 @@ public class EditController {
             //设置新增页面的控制器
             //CSEditDialogController controller = loader.getController();
             //controller.setDialogStage(ChooseStage);
-
-            Stage stage = (Stage) editstage.getScene().getWindow();
-            stage.close();
+            stage = (Stage) editstage.getScene().getWindow();
             //显示对话框并等待用户操作
             ChooseStage.showAndWait();
-
+            EditStage = stage;
 
 
         }
-
+    @FXML public Stage getStage(){
+        return stage = EditStage;
+    }
     public void setEditStage(Stage stage) {
          this.stage= stage;
     }

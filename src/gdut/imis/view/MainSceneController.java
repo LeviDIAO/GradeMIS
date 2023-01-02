@@ -28,7 +28,9 @@ public class MainSceneController {
     @FXML
     //处理编辑的鼠标点击操作
     public  void handleEdit(){
-        showEdit();
+        EditController controller = new EditController();
+        stage=controller.getStage();
+        stage.setOpacity(1);
     }
 
     @FXML
@@ -37,33 +39,7 @@ public class MainSceneController {
         new GradeService().save();
     }
 
-    @FXML public void showEdit(){
-        FXMLLoader loader=new FXMLLoader(EditController.class.getResource("Edit.fxml"));
-        HBox root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Stage Editstage = new Stage();
-        //stage.initModality(Modality.WINDOW_MODAL);
-        Editstage.setScene(new Scene(root));
 
-        //设置新增页面的控制器
-        EditController controller = loader.getController();
-        controller.setEditStage(stage);
-
-        //Editstage.setX(mainX+305);
-        //Editstage.setY(mainY+174);
-        //取消标题栏
-        //Editstage.initStyle(StageStyle.UNDECORATED);
-        //置于最上层
-        Editstage.setAlwaysOnTop(true);
-        //修改透明度
-        //Editstage.setOpacity(0.5);
-        //显示对话框并等待用户操作
-        Editstage.showAndWait();
-    }
     @FXML
     public void print(){
         text.setText("chenggong");
