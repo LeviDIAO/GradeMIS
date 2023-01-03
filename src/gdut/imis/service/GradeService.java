@@ -164,15 +164,16 @@ public class GradeService implements IGrade {
     }
     @Override
     public void sortByGrade(String dept) {
+        init();
         ArrayList<Student> deptStu = new ArrayList<>();
+        StringBuffer str = new StringBuffer();
+        //筛选指定系的学生
         for (int i = 0; i < stuList.size(); i++) {
             if (stuList.get(i).getDepartment().equals(dept)) deptStu.add(stuList.get(i));
         }
-        //筛选指定系的学生
-
         Student[] deptStuArr = new Student[deptStu.size()];
         deptStu.toArray(deptStuArr);
-
+        //基于综合成绩完成该系学生信息的排序（冒泡排序）
         for (int i = 0; i < deptStuArr.length - 1; i++) {
             boolean flag = true;
             for (int k = 0; k < deptStuArr.length - 1 - i; k++) {
@@ -185,11 +186,10 @@ public class GradeService implements IGrade {
             }
             if (flag) break;
         }
-        //基于综合成绩完成该系学生信息的排序（冒泡排序）
-
         for (Student s : deptStuArr) {
-
+            str.append(s.getDepartment()).append("\t").append(s.getId()).append("\t").append(s.getName()).append("\t").append(s.countGrade()).append("\n");
         }
+        showInfo(str);
     }
     public void save() {
         Student[] stuArr = new Student[stuList.size()];

@@ -3,15 +3,11 @@ package gdut.imis.view;
 import gdut.imis.entity.CS;
 import gdut.imis.entity.Student;
 import gdut.imis.service.GradeService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
-import javafx.scene.control.*;
-
-import java.awt.event.MouseEvent;
 
 public class CSEditController {
     @FXML
@@ -58,4 +54,5 @@ public class CSEditController {
     private void handleCancel(){
         CSEditor.close();
     }
+
 }

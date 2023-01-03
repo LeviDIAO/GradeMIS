@@ -1,8 +1,6 @@
 package gdut.imis.view;
 
-import gdut.imis.entity.Student;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 

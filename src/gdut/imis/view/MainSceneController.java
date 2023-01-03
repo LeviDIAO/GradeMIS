@@ -4,13 +4,12 @@ import gdut.imis.service.GradeService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-//import java.awt.*;
-import java.io.IOException;
-import javafx.scene.control.*;
 import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 public class MainSceneController {
     @FXML private TextField idDelete;
@@ -101,7 +100,13 @@ public class MainSceneController {
         Double max = Double.parseDouble(maxText.getText());
         new GradeService().selectByGrade(min,max);
     }
-    @FXML private void sortByGrade(){
-
+    @FXML private void CSsortByGrade(){
+        new GradeService().sortByGrade("计算机系");
+    }
+    @FXML private void ENsortByGrade(){
+        new GradeService().sortByGrade("英语系");
+    }
+    @FXML private void LTsortByGrade(){
+        new GradeService().sortByGrade("文学系");
     }
 }

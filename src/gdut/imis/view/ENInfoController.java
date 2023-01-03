@@ -1,15 +1,10 @@
 package gdut.imis.view;
 
-import gdut.imis.entity.CS;
 import gdut.imis.entity.EN;
-import gdut.imis.entity.Student;
 import gdut.imis.service.GradeService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class ENInfoController {
@@ -48,5 +43,20 @@ public class ENInfoController {
         finalScoreField.setText(String.valueOf(s.getFinalScore()));
         speechScoreField.setText(String.valueOf(s.getSpeechScore()));
         writeScore.setText(String.valueOf(s.getWriteScore()));
+    }
+    @FXML private void handleOK(ActionEvent event){
+        EN en = new EN();
+        en.setId(id.getText());
+        en.setName(name.getText());
+        en.setDepartment("英语系");
+        en.setAge(Integer.parseInt(age.getText()));
+        en.setSex((sex.getText()));
+        en.setMidScore(Double.parseDouble(midScoreField.getText()));
+        en.setFinalScore(Double.parseDouble(finalScoreField.getText()));
+        en.setSpeechScore(Double.parseDouble(speechScoreField.getText()));
+        en.setWriteScore(Double.parseDouble(writeScore.getText()));
+        new GradeService().insert(en);
+        new GradeService().save();
+        Editor.close();
     }
 }

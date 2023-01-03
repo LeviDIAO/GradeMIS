@@ -1,6 +1,5 @@
 package gdut.imis.view;
 
-import gdut.imis.entity.CS;
 import gdut.imis.entity.LT;
 import gdut.imis.entity.Student;
 import gdut.imis.service.GradeService;
