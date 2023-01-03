@@ -101,4 +101,7 @@ public class MainSceneController {
         Double max = Double.parseDouble(maxText.getText());
         new GradeService().selectByGrade(min,max);
     }
+    @FXML private void sortByGrade(){
+
+    }
 }

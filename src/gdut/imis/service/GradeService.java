@@ -115,13 +115,17 @@ public class GradeService implements IGrade {
     @Override
     public Student[] selectByName(String name) {
         init();
+        boolean key = true;
         alert = ("不存在该记录，查询失败！");
         for (Student s : stuList) {
             if (s.getName().equals(name)) {
-                alert=(s.getInfo());
+                if (s.getDepartment().equals("计算机系")) showCSInfo((CS)s);
+                if (s.getDepartment().equals("英语系")) showENInfo((EN)s);
+                if (s.getDepartment().equals("文学系")) showLTInfo((LT)s);
+                key=false;
             }
         }
-        showAlert();
+        if(key)showAlert();
         return null;
     }
 
