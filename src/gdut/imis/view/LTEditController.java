@@ -47,7 +47,7 @@ public class LTEditController {
         LT lt = new LT();
         lt.setId(id.getText());
         lt.setName(name.getText());
-        lt.setDepartment("计算机系");
+        lt.setDepartment("文学系");
         lt.setAge(Integer.parseInt(age.getText()));
         lt.setSex(((RadioButton)(sex.getSelectedToggle())).getText());
         lt.setMidScore(Double.parseDouble(midScoreField.getText()));

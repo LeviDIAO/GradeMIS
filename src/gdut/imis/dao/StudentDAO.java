@@ -4,6 +4,7 @@ import gdut.imis.entity.CS;
 import gdut.imis.entity.EN;
 import gdut.imis.entity.LT;
 import gdut.imis.entity.Student;
+import gdut.imis.service.GradeService;
 import gdut.imis.view.AlertController;
 import gdut.imis.view.CSEditController;
 import javafx.fxml.FXMLLoader;
@@ -84,7 +85,7 @@ public class StudentDAO {
             }
         } catch (FileNotFoundException e) {
             alert=("文件找不到啊！");
-            showAlert();
+            new GradeService().showAlert();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

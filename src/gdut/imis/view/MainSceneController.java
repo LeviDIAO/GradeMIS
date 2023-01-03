@@ -14,10 +14,9 @@ import javafx.stage.StageStyle;
 
 public class MainSceneController {
     @FXML private TextField idDelete;
-    @FXML private void insert(){
-        showCSEdit();
-
-    }
+    @FXML private TextField idSelect;
+    @FXML private TextField minText;
+    @FXML private TextField maxText;
     @FXML public void showCSEdit(){
         FXMLLoader loader=new FXMLLoader(CSEditController.class.getResource("CSEdit.fxml"));
         AnchorPane root = null;
@@ -88,5 +87,18 @@ public class MainSceneController {
     @FXML private void save(){
         new GradeService();
         GradeService.getGradeService().save();
+    }
+    @FXML private void selectById(){
+        String id = idSelect.getText();
+        new GradeService().selectById(id);
+    }
+    @FXML private void selectByName(){
+        String id = idSelect.getText();
+        new GradeService().selectByName(id);
+    }
+    @FXML private void selectByGrade(){
+        Double min = Double.parseDouble(minText.getText());
+        Double max = Double.parseDouble(maxText.getText());
+        new GradeService().selectByGrade(min,max);
     }
 }

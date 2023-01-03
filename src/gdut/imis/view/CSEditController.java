@@ -28,11 +28,9 @@ public class CSEditController {
     private TextField finalScoreField;
     @FXML
     private TextField operationScoreField;
-    @FXML private Button cancle;
     @FXML
     private Stage CSEditor;
     private Student stu;
-
     @FXML
     private void initialize(){
 
@@ -42,7 +40,7 @@ public class CSEditController {
         CSEditor = dialogStage;
     }
     @FXML
-    private void handleOK(ActionEvent event){
+    private void handleOK(){
         CS cs = new CS();
         cs.setId(id.getText());
         cs.setName(name.getText());

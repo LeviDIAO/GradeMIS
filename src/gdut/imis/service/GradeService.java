@@ -1,9 +1,11 @@
 package gdut.imis.service;
 
 import gdut.imis.dao.StudentDAO;
+import gdut.imis.entity.CS;
+import gdut.imis.entity.EN;
+import gdut.imis.entity.LT;
 import gdut.imis.entity.Student;
-import gdut.imis.view.AlertController;
-import gdut.imis.view.CSEditController;
+import gdut.imis.view.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -58,7 +60,7 @@ public class GradeService implements IGrade {
         AlertController controller = loader.getController();
         controller.setStage(AlertStage);
         //取消标题栏
-        AlertStage.initStyle(StageStyle.UNDECORATED);
+        //AlertStage.initStyle(StageStyle.UNDECORATED);
         //置于最上层
         AlertStage.setAlwaysOnTop(true);
         controller.print(alert);
@@ -96,19 +98,66 @@ public class GradeService implements IGrade {
 
     @Override
     public Student selectById(String id) {
+        init();
+        boolean key = true;
+        alert = ("不存在该记录，查询失败！");
+        for (Student s : stuList) {
+            if (s.getId().equals(id)) {
+                if (s.getDepartment().equals("计算机系")) showCSInfo((CS)s);
+                if (s.getDepartment().equals("英语系")) showENInfo((EN)s);
+                if (s.getDepartment().equals("文学系")) showLTInfo((LT)s);
+                key=false;
+            }
+        }
+        if(key)showAlert();
+        return null;
+    }
+    @Override
+    public Student[] selectByName(String name) {
+        init();
+        alert = ("不存在该记录，查询失败！");
+        for (Student s : stuList) {
+            if (s.getName().equals(name)) {
+                alert=(s.getInfo());
+            }
+        }
+        showAlert();
         return null;
     }
 
     @Override
-    public Student[] selectByName(String name) {
-        return new Student[0];
+    public Student[] selectByGrade( double min, double max) {
+        init();
+        StringBuffer str = new StringBuffer();
+        for (Student s : stuList) {
+            if (s.countGrade() < max && s.countGrade() > min) {
+                str.append(s.getDepartment()).append("\t").append(s.getId()).append("\t").append(s.getName()).append("\t").append(s.countGrade()).append("\n");
+            }
+        }
+        showInfo(str);
+        return null;
     }
-
-    @Override
-    public Student[] selectByGrade(String dept, double min, double max) {
-        return new Student[0];
+    public void showInfo(StringBuffer stringBuffer) {
+        FXMLLoader loader = new FXMLLoader(CSEditController.class.getResource("Info.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage AlertStage = new Stage();
+        AlertStage.initModality(Modality.WINDOW_MODAL);
+        AlertStage.setScene(new Scene(root));
+        //设置新增页面的控制器
+        InfoController controller = loader.getController();
+        controller.setStage(AlertStage);
+        controller.setTextArea(stringBuffer);
+        //取消标题栏
+        //AlertStage.initStyle(StageStyle.UNDECORATED);
+        //置于最上层
+        AlertStage.setAlwaysOnTop(true);
+        AlertStage.showAndWait();
     }
-
     @Override
     public void sortByGrade(String dept) {
         ArrayList<Student> deptStu = new ArrayList<>();
@@ -134,17 +183,86 @@ public class GradeService implements IGrade {
         }
         //基于综合成绩完成该系学生信息的排序（冒泡排序）
 
-        System.out.println("系别\t学号\t姓名\t综合成绩");
         for (Student s : deptStuArr) {
-            System.out.println(s.getDepartment() + "\t\t" + s.getId() + "\t" + s.getName() + "\t" + s.countGrade());
+
         }
     }
-
     public void save() {
         Student[] stuArr = new Student[stuList.size()];
         stuList.toArray(stuArr);
         new StudentDAO();
         StudentDAO.write(stuArr);
     }
+    private void showCSInfo(CS s){
+        FXMLLoader loader = new FXMLLoader(CSEditController.class.getResource("CSInfo.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage AlertStage = new Stage();
+        AlertStage.initModality(Modality.WINDOW_MODAL);
+        AlertStage.setScene(new Scene(root));
+        //设置新增页面的控制器
+        CSInfoController controller = loader.getController();
+        controller.setStage(AlertStage);
+        controller.setInfo(s);
+        //取消标题栏
+        //AlertStage.initStyle(StageStyle.UNDECORATED);
+        //置于最上层
+        AlertStage.setAlwaysOnTop(true);
+        AlertStage.showAndWait();
+    }
+    private void showENInfo(EN s){
+        FXMLLoader loader = new FXMLLoader(CSEditController.class.getResource("ENInfo.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage AlertStage = new Stage();
+        AlertStage.initModality(Modality.WINDOW_MODAL);
+        AlertStage.setScene(new Scene(root));
+        //设置新增页面的控制器
+        ENInfoController controller = loader.getController();
+        controller.setStage(AlertStage);
+        controller.setInfo(s);
+        //取消标题栏
+        //AlertStage.initStyle(StageStyle.UNDECORATED);
+        //置于最上层
+        AlertStage.setAlwaysOnTop(true);
+        AlertStage.showAndWait();
+    }
+    private void showLTInfo(LT s){
+        FXMLLoader loader = new FXMLLoader(CSEditController.class.getResource("LTInfo.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage AlertStage = new Stage();
+        AlertStage.initModality(Modality.WINDOW_MODAL);
+        AlertStage.setScene(new Scene(root));
+        //设置新增页面的控制器
+        LTInfoController controller = loader.getController();
+        controller.setStage(AlertStage);
+        controller.setInfo(s);
+        //取消标题栏
+        //AlertStage.initStyle(StageStyle.UNDECORATED);
+        //置于最上层
+        AlertStage.setAlwaysOnTop(true);
+        AlertStage.showAndWait();
+    }
+
+
+
+
+
+
+
+
 }
 

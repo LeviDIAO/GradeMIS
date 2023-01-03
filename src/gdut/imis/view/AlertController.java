@@ -16,8 +16,7 @@ import javafx.scene.control.*;
 import javax.swing.*;
 
 public class AlertController {
-    @FXML private TextArea textArea;
-    @FXML private Button ok;
+    @FXML private Label textArea;
     private Stage stage;
     @FXML
     public void print(String str){

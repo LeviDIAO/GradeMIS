@@ -178,20 +178,20 @@
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <Line endX="116.0" endY="15.0" layoutX="135.0" layoutY="249.0" startX="-91.0" startY="15.0" />
-                                    <TextField layoutX="14.0" layoutY="88.0" prefHeight="45.0" prefWidth="217.0" promptText="输入学号或姓名以精准查询" />
+                                    <TextField fx:id="idSelect" layoutX="14.0" layoutY="88.0" prefHeight="45.0" prefWidth="217.0" promptText="输入学号或姓名以精准查询" />
                                     <MenuBar layoutX="239.0" layoutY="93.0">
                                       <menus>
                                         <Menu mnemonicParsing="false" text="搜索">
                                           <items>
-                                            <MenuItem mnemonicParsing="false" text="学号" />
-                                                <MenuItem mnemonicParsing="false" text="姓名" />
+                                            <MenuItem mnemonicParsing="false" onAction="#selectById" text="学号" />
+                                                <MenuItem mnemonicParsing="false" onAction="#selectByName" text="姓名" />
                                           </items>
                                         </Menu>
                                       </menus>
                                     </MenuBar>
-                                    <TextField layoutY="235.0" prefHeight="60.0" prefWidth="50.0" promptText="min" />
-                                    <TextField layoutX="232.0" layoutY="235.0" prefHeight="60.0" prefWidth="50.0" promptText="max" />
-                                    <Button layoutX="70.0" layoutY="249.0" mnemonicParsing="false" text="根据成绩区间查询" />
+                                    <TextField fx:id="minText" layoutY="235.0" prefHeight="60.0" prefWidth="50.0" promptText="min" />
+                                    <TextField fx:id="maxText" layoutX="232.0" layoutY="235.0" prefHeight="60.0" prefWidth="50.0" promptText="max" />
+                                    <Button layoutX="70.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#selectByGrade" text="根据成绩区间查询" />
                                  </children>
                               </AnchorPane>
                         </content>
