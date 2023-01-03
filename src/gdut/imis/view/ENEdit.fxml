@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="360.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdut.imis.view.CSEditController">
+<AnchorPane prefHeight="360.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gdut.imis.view.ENEditController">
    <children>
       <GridPane layoutX="100.0" layoutY="119.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
@@ -26,6 +26,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="学号：" />
@@ -34,7 +35,7 @@
             <Label text="性别：" GridPane.rowIndex="3" />
             <Label text="期中考试：" GridPane.rowIndex="4" />
             <Label text="期末考试：" GridPane.rowIndex="5" />
-            <Label text="操作能力：" GridPane.rowIndex="6" />
+            <Label text="演讲：" GridPane.rowIndex="6" />
             <TextField fx:id="id" GridPane.columnIndex="1" />
             <TextField fx:id="name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -50,10 +51,12 @@
             <TextField fx:id="age" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="midScoreField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="finalScoreField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="operationScoreField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="写作：" GridPane.rowIndex="7" />
+            <TextField fx:id="writeScore" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="speechScoreField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button fx:id="cancle" layoutX="320.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#handleCancel" text="取消" />
+      <Button fx:id="cancle" layoutX="320.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleCancel" onMouseClicked="#handleCancel" text="取消" />
       <Button layoutX="251.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleOK" text="确认" />
    </children>
 </AnchorPane>

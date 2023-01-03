@@ -10,12 +10,10 @@ public abstract class Student {
     private String sex;
     private double midScore;
     private double finalScore;
-    //所有学生具体的属性
-
+//构造方法
     public Student() {
     }
-    //无参构造方法
-
+//构造方法
     public Student(String id, String name, int age, String department, String sex, double midScore, double finalScore) {
         this.id = id;
         this.name = name;
@@ -27,8 +25,7 @@ public abstract class Student {
             this.finalScore = finalScore;
         }
     }
-    //有参构造方法
-
+//getter setter
     public String getId() {
         return id;
     }
@@ -88,16 +85,13 @@ public abstract class Student {
             this.finalScore = finalScore;
         }
     }
-    //getter setter
-
+    //获取学生信息
     public String getInfo(){
         return department+"#"+id+"#"+name+"#"+age+"#"+sex+"#"+midScore+"#"+finalScore;
     }
-    //获取学生信息
-
-    public abstract double countGrade();
     //成绩评测标准
-
+    public abstract double countGrade();
+    //成绩输入约束
     public boolean checkScore(double...score){
         for(double s:score){
             try{
@@ -111,5 +105,4 @@ public abstract class Student {
         }
         return true;
     }
-    //成绩输入约束
 }

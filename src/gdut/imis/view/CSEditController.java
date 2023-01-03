@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.*;
 
+import java.awt.event.MouseEvent;
+
 public class CSEditController {
     @FXML
     private TextField id;
@@ -26,8 +28,9 @@ public class CSEditController {
     private TextField finalScoreField;
     @FXML
     private TextField operationScoreField;
+    @FXML private Button cancle;
     @FXML
-    private Stage dialogStage;
+    private Stage CSEditor;
     private Student stu;
 
     @FXML
@@ -35,11 +38,9 @@ public class CSEditController {
 
     }
 
-    //public void setDialogStage(Stage dialogStage) {
-        //this.dialogStage = dialogStage;
-    //}
-
-    //确认的鼠标点击操作
+    public void setStage(Stage dialogStage) {
+        CSEditor = dialogStage;
+    }
     @FXML
     private void handleOK(ActionEvent event){
         CS cs = new CS();
@@ -51,13 +52,12 @@ public class CSEditController {
         cs.setMidScore(Double.parseDouble(midScoreField.getText()));
         cs.setFinalScore(Double.parseDouble(finalScoreField.getText()));
         cs.setOperationScore(Double.parseDouble(operationScoreField.getText()));
-        new GradeService().insert(cs);
-        dialogStage.close();
+        new GradeService();
+        GradeService.getGradeService().insert(cs);
+        CSEditor.close();
     }
     @FXML
-            //取消的鼠标点击操作
-    private void handleCancel(ActionEvent event){
-        dialogStage.close();
+    private void handleCancel(){
+        CSEditor.close();
     }
-
 }

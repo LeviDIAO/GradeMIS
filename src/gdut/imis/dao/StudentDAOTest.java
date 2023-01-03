@@ -11,8 +11,10 @@ public class StudentDAOTest {
     @org.junit.Test
     public void write() {
         GradeService gs = new GradeService();
-        Student stu = new CS("2002","hong", 20,"计算机系","女",90,86,78);
-        gs.insert(stu);
-        gs.save();
+        gs=GradeService.getGradeService();
+        Student stu = new CS("77751","不调用javafx测试", 21,"计算机系","女",90,86,78);
+        gs.delete(String.valueOf(2));
     }
+
+
 }
