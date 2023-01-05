@@ -6,11 +6,13 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+
+import java.awt.*;
+import java.util.Objects;
 
 public class MainApp extends Application {
     @Override
@@ -25,6 +27,10 @@ public class MainApp extends Application {
         stage.initStyle(StageStyle.UTILITY);
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
+
+        //scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm());
+
+
         stage.show();
         MainSceneController controller = loader.getController();
         //主界面关闭时全部窗口关闭
@@ -34,6 +40,7 @@ public class MainApp extends Application {
                 Platform.exit();
                 System.exit(0);            }
         });
+
     }
 
     public static void main(String[] args) {
