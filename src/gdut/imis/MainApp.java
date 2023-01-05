@@ -27,10 +27,6 @@ public class MainApp extends Application {
         stage.initStyle(StageStyle.UTILITY);
         stage.setAlwaysOnTop(true);
         stage.setResizable(false);
-
-        //scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm());
-
-
         stage.show();
         MainSceneController controller = loader.getController();
         //主界面关闭时全部窗口关闭
