@@ -1,5 +1,6 @@
 package gdut.imis.view;
 
+import gdut.imis.dao.StudentDAO;
 import gdut.imis.entity.CS;
 import gdut.imis.service.GradeService;
 import javafx.fxml.FXML;
@@ -35,13 +36,14 @@ public class CSInfoController {
         id.setText(s.getId());
         name.setText(s.getName());
         dept.setText(s.getDepartment());
-        age.setText(s.getSex());
+        age.setText(String.valueOf(s.getAge()));
         sex.setText(s.getSex());
         midScoreField.setText(String.valueOf(s.getMidScore()));
         finalScoreField.setText(String.valueOf(s.getFinalScore()));
         operationScoreField.setText(String.valueOf(s.getOperationScore()));
     }
     @FXML private void handleOK(){
+        new GradeService().delete(id.getText());
         CS cs = new CS();
         cs.setId(id.getText());
         cs.setName(name.getText());

@@ -43,6 +43,7 @@ public class LTEditController {
     }
     @FXML
     private void handleOK(ActionEvent event){
+        new GradeService().delete(id.getText());
         LT lt = new LT();
         lt.setId(id.getText());
         lt.setName(name.getText());

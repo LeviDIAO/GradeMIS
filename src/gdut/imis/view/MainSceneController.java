@@ -1,9 +1,14 @@
 package gdut.imis.view;
 
+import gdut.imis.MainApp;
+import gdut.imis.entity.Person;
 import gdut.imis.service.GradeService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -12,6 +17,25 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class MainSceneController {
+
+    @FXML
+    private TableView<Person> personTable;
+    @FXML
+    private TableColumn<Person, String> idColum;
+    @FXML
+    private TableColumn<Person, String> nameColum;
+    private MainApp mainApp;
+    @FXML private void initialize(){
+        idColum.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+        nameColum.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+    }
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+
+        // Add observable list data to the table
+        personTable.setItems(mainApp.getPersonData());
+    }
     @FXML private TextField idDelete;
     @FXML private TextField idSelect;
     @FXML private TextField minText;
@@ -86,6 +110,12 @@ public class MainSceneController {
     @FXML private void save(){
         new GradeService();
         GradeService.getGradeService().save();
+        reflashTable();
+        new MainApp();
+        setMainApp(mainApp);
+    }
+    @FXML public void reflashTable(){
+	personTable.getItems().setAll(new MainApp().getPersonData());
     }
     @FXML private void selectById(){
         String id = idSelect.getText();

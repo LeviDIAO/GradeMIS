@@ -37,7 +37,7 @@ public class LTInfoController {
         id.setText(s.getId());
         name.setText(s.getName());
         dept.setText(s.getDepartment());
-        age.setText(s.getSex());
+        age.setText(String.valueOf(s.getAge()));
         sex.setText(s.getSex());
         midScoreField.setText(String.valueOf(s.getMidScore()));
         finalScoreField.setText(String.valueOf(s.getFinalScore()));

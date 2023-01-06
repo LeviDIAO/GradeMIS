@@ -37,7 +37,7 @@ public class ENInfoController {
         id.setText(s.getId());
         name.setText(s.getName());
         dept.setText(s.getDepartment());
-        age.setText(s.getSex());
+        age.setText(String.valueOf(s.getAge()));
         sex.setText(s.getSex());
         midScoreField.setText(String.valueOf(s.getMidScore()));
         finalScoreField.setText(String.valueOf(s.getFinalScore()));
@@ -45,6 +45,7 @@ public class ENInfoController {
         writeScore.setText(String.valueOf(s.getWriteScore()));
     }
     @FXML private void handleOK(ActionEvent event){
+        new GradeService().delete(id.getText());
         EN en = new EN();
         en.setId(id.getText());
         en.setName(name.getText());
